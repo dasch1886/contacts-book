@@ -16,7 +16,7 @@ export class RemoveContactDialogComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { contact: Contact },
-              private clientService: ContactsService,
+              private contactsService: ContactsService,
               private toastr: ToastrService) {
   }
 
@@ -39,7 +39,7 @@ export class RemoveContactDialogComponent implements OnInit, OnDestroy {
 
   remove() {
     this.subscription.add(
-      this.clientService.removeContact(this.data.contact.id).subscribe(
+      this.contactsService.removeContact(this.data.contact.id).subscribe(
         () => this.toastr.warning('Usunięto kontakt!')
       )
     )

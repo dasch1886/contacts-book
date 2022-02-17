@@ -4,7 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {AddContactDialogComponent} from "@modules/contacts/views/contacts/add-contact-dialog/add-contact-dialog.component";
 
 @Component({
-  selector: 'app-clients',
+  selector: 'app-contacts',
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss']
 })

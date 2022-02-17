@@ -7,7 +7,7 @@ import {ColumnsConfig} from "@modules/contacts/views/contacts/table/colums.confi
 import {GenderEnum} from "@shared/enums/gender.enum";
 
 @Component({
-  selector: 'app-add-client-dialog',
+  selector: 'app-add-contact-dialog',
   templateUrl: './add-contact-dialog.component.html',
   styleUrls: ['./add-contact-dialog.component.scss']
 })
@@ -18,7 +18,7 @@ export class AddContactDialogComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
 
   constructor(private fb: FormBuilder,
-              private clientService: ContactsService,
+              private contactsService: ContactsService,
               private toastr: ToastrService) {
   }
 
@@ -43,7 +43,7 @@ export class AddContactDialogComponent implements OnInit, OnDestroy {
 
   createContact() {
     this.subscription.add(
-      this.clientService.createContact(this.form.value).subscribe(
+      this.contactsService.createContact(this.form.value).subscribe(
         () => this.toastr.success('Dodano kontakt!')
       )
     );
