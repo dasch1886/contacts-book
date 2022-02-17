@@ -1,4 +1,5 @@
 export enum ContactsRoute {
-  DETAILS = 'details/:id',
-  EDIT = 'edit/:id'
+  BASE = 'clients',
+  DETAILS = 'details',
+  EDIT = 'edit'
 }
