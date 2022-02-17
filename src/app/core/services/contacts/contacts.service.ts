@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Contacts} from "@core/services/clients/contacts.mock";
+import {Contacts} from "@core/services/contacts/contacts.mock";
 import {Observable, of} from "rxjs";
-import {Contact} from "@shared/models/clients/contact.model";
+import {Contact} from "@shared/models/contacts/contact.model";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClientsService {
+export class ContactsService {
   private data: Contact[] = Contacts;
 
   constructor() { }

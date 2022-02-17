@@ -1,21 +1,21 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ClientsService} from "@core/services/clients/clients.service";
-import {Contact} from "@shared/models/clients/contact.model";
-import {ColumnsConfig} from "@modules/clients/views/clients/table/colums.config";
+import {ContactsService} from "@core/services/contacts/contacts.service";
+import {Contact} from "@shared/models/contacts/contact.model";
+import {ColumnsConfig} from "@modules/contacts/views/clients/table/colums.config";
 import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-clients-table',
-  templateUrl: './clients-table.component.html',
-  styleUrls: ['./clients-table.component.scss']
+  templateUrl: './contacts-table.component.html',
+  styleUrls: ['./contacts-table.component.scss']
 })
-export class ClientsTableComponent implements OnInit, OnDestroy {
+export class ContactsTableComponent implements OnInit, OnDestroy {
   displayedColumns = ColumnsConfig;
   columnsKeys: string[];
   data: Contact[];
   subscription = new Subscription();
 
-  constructor(private clientService: ClientsService) {
+  constructor(private clientService: ContactsService) {
   }
 
   ngOnInit(): void {

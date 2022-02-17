@@ -1,4 +1,4 @@
-import {Contact} from "@shared/models/clients/contact.model";
+import {Contact} from "@shared/models/contacts/contact.model";
 
 export const Contacts: Contact[] = [
   {id: 1, nickname: 'Crazywar', name: 'Robert', surname: 'Pietrzak', email: 'robert.pietrzak@gmail.com', phone: '500 300 400', gender: 'Mężczyzna'},
