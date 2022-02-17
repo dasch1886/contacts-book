@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+mat-form-field {
+  width: 49%;
+}
+
+@include media-breakpoint-down(md) {
+  mat-form-field {
+    width: 100%;
+  }
+}

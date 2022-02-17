@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Dodaj kontakt</h1>
+
+<form class="d-flex flex-wrap justify-content-between" [formGroup]="form" mat-dialog-content>
+
+  <ng-container *ngFor="let field of fields">
+
+    <mat-form-field class="example-full-width" appearance="fill"
+                    *ngIf="field.key !== 'actions' && field.key !== 'gender';else gender">
+      <mat-label>{{field.header | titlecase}}</mat-label>
+      <input [formControlName]="field.key" matInput>
+    </mat-form-field>
+
+    <ng-template #gender>
+      <ng-container *ngIf="field.key === 'gender'">
+
+        <mat-form-field appearance="fill">
+          <mat-label>{{field.header | titlecase}}</mat-label>
+          <mat-select formControlName="gender" disableRipple>
+            <mat-option *ngFor="let item of genderEnum | keyvalue"
+                        [value]="item.value">{{item.value | titlecase}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </ng-container>
+    </ng-template>
+  </ng-container>
+
+</form>
+
+<div class="justify-content-end" mat-dialog-actions>
+  <button mat-raised-button color="primary" type="submit"
+          [disabled]="form.invalid" [mat-dialog-close]="true"
+          (click)="createContact()">Dodaj
+  </button>
+  <button mat-raised-button mat-dialog-close>Zamknij</button>
+</div>
