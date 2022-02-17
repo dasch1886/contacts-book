@@ -1,3 +1,3 @@
 export enum AppRoute {
-  CONTACTS = 'contacts'
+  CONTACTS = 'clients'
 }
