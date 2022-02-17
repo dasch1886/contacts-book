@@ -6,7 +6,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { ContactsTableComponent } from './views/contacts/table/contacts-table.component';
-import { AddContactDialogComponent } from './views/contacts/add-client-dialog/add-contact-dialog.component';
+import { AddContactDialogComponent } from './views/contacts/add-contact-dialog/add-contact-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';

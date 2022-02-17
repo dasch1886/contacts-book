@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ContactsTableComponent} from "@modules/contacts/views/contacts/table/contacts-table.component";
 import {MatDialog} from "@angular/material/dialog";
-import {AddContactDialogComponent} from "@modules/contacts/views/contacts/add-client-dialog/add-contact-dialog.component";
+import {AddContactDialogComponent} from "@modules/contacts/views/contacts/add-contact-dialog/add-contact-dialog.component";
 
 @Component({
   selector: 'app-clients',
