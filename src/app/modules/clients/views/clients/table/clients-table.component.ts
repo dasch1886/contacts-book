@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ClientsService} from "@core/services/clients/clients.service";
 import {Contact} from "@shared/models/clients/contact.model";
-import {ColumsConfig} from "@modules/clients/views/clients/table/colums.config";
+import {ColumnsConfig} from "@modules/clients/views/clients/table/colums.config";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -10,7 +10,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./clients-table.component.scss']
 })
 export class ClientsTableComponent implements OnInit, OnDestroy {
-  displayedColumns = ColumsConfig;
+  displayedColumns = ColumnsConfig;
   columnsKeys: string[];
   data: Contact[];
   subscription = new Subscription();

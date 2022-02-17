@@ -1,4 +1,4 @@
-export const ColumsConfig = [
+export const ColumnsConfig = [
   {
     key: 'nickname',
     header: 'pseudonim'
