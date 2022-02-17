@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ContactsService} from "@core/services/contacts/contacts.service";
 import {Contact} from "@shared/models/contacts/contact.model";
-import {ColumnsConfig} from "@modules/contacts/views/clients/table/colums.config";
+import {ColumnsConfig} from "@modules/contacts/views/contacts/table/colums.config";
 import {Subscription} from "rxjs";
 
 @Component({
