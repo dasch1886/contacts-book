@@ -16,8 +16,9 @@ export class ContactsComponent {
 
   openDialog() {
     const dialogRef = this.dialog.open(AddContactDialogComponent);
+
     dialogRef.afterClosed().subscribe(result => {
       result && this.table.refreshData();
-    })
+    });
   }
 }
