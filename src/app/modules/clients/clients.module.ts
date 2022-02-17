@@ -5,10 +5,12 @@ import {ClientsRoutingModule} from "./clients-routing.module";
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { ClientsTableComponent } from './views/clients/table/clients-table.component';
 
 @NgModule({
   declarations: [
-    ClientsComponent
+    ClientsComponent,
+    ClientsTableComponent
   ],
   imports: [
     CommonModule,
