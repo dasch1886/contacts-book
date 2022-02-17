@@ -11,8 +11,12 @@ export class ContactsService {
 
   constructor() { }
 
-  getClients(): Observable<Contact[]> {
+  getContacts(): Observable<Contact[]> {
     return of(this.data);
+  }
+
+  getContactDetails(id: number) {
+    return of(this.data.find((contact) => contact.id === id));
   }
 
   createContact(contact: Contact) {
