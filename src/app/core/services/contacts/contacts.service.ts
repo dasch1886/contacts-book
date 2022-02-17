@@ -20,4 +20,9 @@ export class ContactsService {
     this.data.push(contact);
     return of({});
   }
+
+  removeContact(id: number) {
+    this.data = this.data.filter((contact) => contact.id !== id);
+    return of({});
+  }
 }
