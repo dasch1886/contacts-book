@@ -53,6 +53,6 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
   }
 
   goToDetails(id: number) {
-    this.router.navigate([`${ContactsRoute.BASE}/${ContactsRoute.EDIT}`, id]);
+    this.router.navigate([`${ContactsRoute.BASE}/${ContactsRoute.DETAILS}`, id]);
   }
 }
