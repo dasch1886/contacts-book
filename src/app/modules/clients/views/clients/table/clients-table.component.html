@@ -1,0 +1,36 @@
+<table mat-table [dataSource]="data" class="mat-elevation-z8">
+  <ng-container *ngFor="let col of displayedColumns">
+
+    <ng-container *ngIf="col.key !== 'actions'; else actions" [matColumnDef]="col.key">
+      <th mat-header-cell *matHeaderCellDef>{{col.header | titlecase }}</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="d-none d-lg-block">{{element[col.key]}}</span>
+        <span class="d-lg-none">{{col.header | titlecase }}</span>
+        <span class="d-lg-none">{{element[col.key]}}</span>
+      </td>
+    </ng-container>
+
+    <ng-template #actions>
+      <ng-container [matColumnDef]="col.key">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button>
+            <mat-icon>search</mat-icon>
+          </button>
+
+          <button mat-icon-button color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+    </ng-template>
+
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsKeys sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsKeys;"></tr>
+</table>

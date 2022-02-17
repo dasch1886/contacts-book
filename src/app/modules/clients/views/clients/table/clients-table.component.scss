@@ -1,0 +1,41 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+table {
+  width: 100%;
+  border-collapse: separate;
+
+  tr:hover:not(.mat-header-row) {
+    background-color: $table-hover-bg;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  table {
+    thead, th {
+      display: none;
+    }
+
+    tbody {
+      display: block;
+    }
+
+    tr {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    td {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem;
+      word-break: break-word;
+
+      &:last-child {
+        border: none;
+        justify-content: center;
+      }
+    }
+  }
+}
