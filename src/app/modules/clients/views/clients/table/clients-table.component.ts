@@ -27,7 +27,7 @@ export class ClientsTableComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
     this.subscription.add(
       this.clientService.getClients().subscribe((data) => {
-        this.data = data;
+        this.data = [...data];
       })
     );
   }
