@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: AppRoute.CLIENTS,
-    loadChildren: () => import('./modules/clients/clients.module').then((m) => m.ClientsModule)
+    loadChildren: () => import('@modules/contacts/contacts.module').then((m) => m.ContactsModule)
   }
 ];
 
