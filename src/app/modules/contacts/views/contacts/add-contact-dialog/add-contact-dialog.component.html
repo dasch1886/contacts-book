@@ -8,6 +8,12 @@
                     *ngIf="field.key !== 'gender';else gender">
       <mat-label>{{field.value | titlecase}}</mat-label>
       <input [formControlName]="field.key" matInput>
+      <mat-error *ngIf="form.controls[field.key]?.hasError('required')">
+        Pole jest wymagane!
+      </mat-error>
+      <mat-error *ngIf="form.get(field.key)?.hasError('maxlength')">
+        Maksymalna długość to {{form.controls[field.key].errors?.['maxlength']['requiredLength']}}
+      </mat-error>
     </mat-form-field>
 
     <ng-template #gender>
@@ -17,6 +23,9 @@
             <mat-option *ngFor="let item of genderEnum | keyvalue"
                         [value]="item.value">{{item.value | titlecase}}</mat-option>
           </mat-select>
+          <mat-error *ngIf="form.get(field.key)?.hasError('required')">
+            Pole jest wymagane!
+          </mat-error>
         </mat-form-field>
     </ng-template>
   </ng-container>
