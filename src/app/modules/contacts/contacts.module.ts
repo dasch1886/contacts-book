@@ -13,6 +13,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RemoveContactDialogComponent } from './views/contacts/remove-contact-dialog/remove-contact-dialog.component';
 import { ContactDetailsComponent } from './views/contact-details/contact-details.component';
+import { ContactEditComponent } from './views/contact-edit/contact-edit.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ContactDetailsComponent } from './views/contact-details/contact-details
     ContactsTableComponent,
     AddContactDialogComponent,
     RemoveContactDialogComponent,
-    ContactDetailsComponent
+    ContactDetailsComponent,
+    ContactEditComponent
   ],
   imports: [
     CommonModule,
