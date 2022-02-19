@@ -5,8 +5,9 @@ import {ColumnsConfig} from "@modules/contacts/views/contacts/table/colums.confi
 import {Subscription} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {RemoveContactDialogComponent} from "@modules/contacts/views/contacts/remove-contact-dialog/remove-contact-dialog.component";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ContactsRoute} from "@modules/contacts/views/contacts.route";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-contacts-table',
@@ -14,23 +15,35 @@ import {ContactsRoute} from "@modules/contacts/views/contacts.route";
   styleUrls: ['./contacts-table.component.scss']
 })
 export class ContactsTableComponent implements OnInit, OnDestroy {
-  displayedColumns = ColumnsConfig;
-  columnsKeys: string[];
+  columns = ColumnsConfig;
+  columnsKeys = ColumnsConfig.map(el => el.key);
   data: Contact[];
   subscription = new Subscription();
 
-  constructor(private contactsService: ContactsService,
+  constructor(private activatedRoute: ActivatedRoute,
+              private toastr: ToastrService,
+              private contactsService: ContactsService,
               private dialog: MatDialog,
               private router: Router) {
   }
 
-  ngOnInit(): void {
-    this.columnsKeys = this.displayedColumns.map(el => el.key);
-    this.refreshData();
+  ngOnInit() {
+    this.initData();
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  initData() {
+    this.activatedRoute.data.subscribe(
+      ({list}) => {
+        this.data = [...list];
+      },
+      (err) => {
+        this.toastr.error(err);
+      }
+    );
   }
 
   refreshData() {
@@ -54,5 +67,9 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
 
   goToDetails(id: number) {
     this.router.navigate([`${ContactsRoute.BASE}/${ContactsRoute.DETAILS}`, id]);
+  }
+
+  goToEdit(id: number) {
+    this.router.navigate([`${ContactsRoute.BASE}/${ContactsRoute.EDIT}`, id]);
   }
 }
