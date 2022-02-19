@@ -1,8 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ContactsService} from "@core/services/contacts/contacts.service";
 import {Contact} from "@shared/models/contacts/contact.model";
 import {ColumnsConfig} from "@modules/contacts/views/contacts/table/colums.config";
-import {Subscription} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {RemoveContactDialogComponent} from "@modules/contacts/views/contacts/remove-contact-dialog/remove-contact-dialog.component";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -14,11 +13,10 @@ import {ToastrService} from "ngx-toastr";
   templateUrl: './contacts-table.component.html',
   styleUrls: ['./contacts-table.component.scss']
 })
-export class ContactsTableComponent implements OnInit, OnDestroy {
+export class ContactsTableComponent implements OnInit {
   columns = ColumnsConfig;
   columnsKeys = ColumnsConfig.map(el => el.key);
   data: Contact[];
-  subscription = new Subscription();
 
   constructor(private activatedRoute: ActivatedRoute,
               private toastr: ToastrService,
@@ -31,28 +29,25 @@ export class ContactsTableComponent implements OnInit, OnDestroy {
     this.initData();
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
   initData() {
     this.activatedRoute.data.subscribe(
-      ({list}) => {
-        this.data = [...list];
-      },
-      (err) => {
-        this.toastr.error(err);
-      }
+      ({list}) => this.onDataResponse(list),
+      (err) => this.onDataError(err)
     );
   }
 
   refreshData() {
-    this.subscription.unsubscribe();
-    this.subscription.add(
-      this.contactsService.getContacts().subscribe((data) => {
-        this.data = [...data];
-      })
-    );
+    this.contactsService.getContacts().subscribe(
+      (data) => this.onDataResponse(data),
+      (err) => this.onDataError(err));
+  }
+
+  onDataResponse(data: Contact[]) {
+    this.data = [...data];
+  }
+
+  onDataError(err: any) {
+    this.toastr.error(err);
   }
 
   openDialog(element: Contact) {
