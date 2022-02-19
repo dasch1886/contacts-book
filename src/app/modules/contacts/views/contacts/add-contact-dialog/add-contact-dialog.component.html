@@ -11,8 +11,6 @@
     </mat-form-field>
 
     <ng-template #gender>
-      <ng-container *ngIf="field.key === 'gender'">
-
         <mat-form-field appearance="fill">
           <mat-label>{{field.value | titlecase}}</mat-label>
           <mat-select [formControlName]="field.key" disableRipple>
@@ -20,8 +18,6 @@
                         [value]="item.value">{{item.value | titlecase}}</mat-option>
           </mat-select>
         </mat-form-field>
-
-      </ng-container>
     </ng-template>
   </ng-container>
 
