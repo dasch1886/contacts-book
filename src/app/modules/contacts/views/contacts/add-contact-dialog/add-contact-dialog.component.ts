@@ -1,33 +1,30 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ContactsService} from "@core/services/contacts/contacts.service";
 import {ToastrService} from "ngx-toastr";
-import {Subscription} from "rxjs";
 import {ColumnsConfig} from "@modules/contacts/views/contacts/table/colums.config";
 import {GenderEnum} from "@shared/enums/gender.enum";
+import {MatDialogRef} from "@angular/material/dialog";
+import {finalize} from "rxjs/operators";
 
 @Component({
   selector: 'app-add-contact-dialog',
   templateUrl: './add-contact-dialog.component.html',
   styleUrls: ['./add-contact-dialog.component.scss']
 })
-export class AddContactDialogComponent implements OnInit, OnDestroy {
-  fields = ColumnsConfig;
+export class AddContactDialogComponent implements OnInit {
+  fields = ColumnsConfig.filter(el => el.key !== 'actions');
   genderEnum = GenderEnum;
   form: FormGroup;
-  subscription = new Subscription();
 
   constructor(private fb: FormBuilder,
+              private ref: MatDialogRef<AddContactDialogComponent>,
               private contactsService: ContactsService,
               private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
     this.createForm();
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   createForm() {
@@ -42,10 +39,10 @@ export class AddContactDialogComponent implements OnInit, OnDestroy {
   }
 
   createContact() {
-    this.subscription.add(
-      this.contactsService.createContact(this.form.value).subscribe(
+    this.contactsService.createContact(this.form.value)
+      .pipe(finalize(() => this.ref.close(true)))
+      .subscribe(
         () => this.toastr.success('Dodano kontakt!')
-      )
-    );
+      );
   }
 }
