@@ -1,40 +1,14 @@
 <h1 mat-dialog-title>Czy chcesz usunąć ?</h1>
 
 <section class="d-flex flex-wrap" mat-dialog-content>
-  <div>
-    <span>{{fields['nickname'] | titlecase}}</span>
-    <span>{{data.contact.nickname}}</span>
-  </div>
-
-  <div>
-    <span>{{fields['name'] | titlecase}}</span>
-    <span>{{data.contact.name}}</span>
-  </div>
-
-  <div>
-    <span>{{fields['surname'] | titlecase}}</span>
-    <span>{{data.contact.surname}}</span>
-  </div>
-
-  <div>
-    <span>{{fields['email'] | titlecase}}</span>
-    <span>{{data.contact.email}}</span>
-  </div>
-
-  <div>
-    <span>{{fields['phone'] | titlecase}}</span>
-    <span>{{data.contact.phone}}</span>
-  </div>
-
-  <div>
-    <span>{{fields['gender'] | titlecase}}</span>
-    <span>{{data.contact.gender}}</span>
+  <div *ngFor="let field of fields">
+    <span>{{field.label | titlecase}}</span>
+    <span>{{field.value}}</span>
   </div>
 </section>
 
 <div class="justify-content-end" mat-dialog-actions>
-  <button mat-raised-button color="warn" [mat-dialog-close]="true"
-  (click)="remove()">Usuń
+  <button mat-raised-button color="warn" (click)="remove()">Usuń
   </button>
   <button mat-raised-button mat-dialog-close>Zamknij</button>
 </div>
