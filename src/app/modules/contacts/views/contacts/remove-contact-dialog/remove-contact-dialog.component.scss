@@ -1,0 +1,24 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+section {
+  div {
+    width: 50%;
+    padding: 10px 0;
+
+    & > span {
+      display: block;
+
+      &:first-child {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+ section {
+   div {
+     width: 100%;
+   }
+ }
+}

@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  app-contacts-table {
+    margin-top: 30px;
+  }
+}

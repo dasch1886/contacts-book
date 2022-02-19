@@ -5,12 +5,12 @@ import {AppRoute} from "./app.route";
 const routes: Routes = [
   {
     path: '',
-    redirectTo: AppRoute.CLIENTS,
+    redirectTo: AppRoute.CONTACTS,
     pathMatch: 'full'
   },
   {
-    path: AppRoute.CLIENTS,
-    loadChildren: () => import('./modules/clients/clients.module').then((m) => m.ClientsModule)
+    path: AppRoute.CONTACTS,
+    loadChildren: () => import('@modules/contacts/contacts.module').then((m) => m.ContactsModule)
   }
 ];
 

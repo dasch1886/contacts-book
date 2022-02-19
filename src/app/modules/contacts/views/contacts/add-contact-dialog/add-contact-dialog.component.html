@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Dodaj kontakt</h1>
+
+<form class="d-flex flex-wrap justify-content-between" [formGroup]="form" mat-dialog-content>
+
+  <ng-container *ngFor="let field of fields">
+
+    <mat-form-field class="example-full-width" appearance="fill"
+                    *ngIf="field.key !== 'gender';else gender">
+      <mat-label>{{field.value | titlecase}}</mat-label>
+      <input [formControlName]="field.key" matInput>
+      <mat-error *ngIf="form.controls[field.key]?.hasError('required')">
+        Pole jest wymagane!
+      </mat-error>
+      <mat-error *ngIf="form.get(field.key)?.hasError('maxlength')">
+        Maksymalna długość to {{form.controls[field.key].errors?.['maxlength']['requiredLength']}}
+      </mat-error>
+    </mat-form-field>
+
+    <ng-template #gender>
+        <mat-form-field appearance="fill">
+          <mat-label>{{field.value | titlecase}}</mat-label>
+          <mat-select [formControlName]="field.key" disableRipple>
+            <mat-option *ngFor="let item of genderEnum | keyvalue"
+                        [value]="item.value">{{item.value | titlecase}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get(field.key)?.hasError('required')">
+            Pole jest wymagane!
+          </mat-error>
+        </mat-form-field>
+    </ng-template>
+  </ng-container>
+
+</form>
+
+<div class="justify-content-end" mat-dialog-actions>
+  <button mat-raised-button color="primary" type="submit"
+          [disabled]="form.invalid" (click)="createContact()">Dodaj
+  </button>
+  <button mat-raised-button mat-dialog-close>Zamknij</button>
+</div>

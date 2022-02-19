@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+main {
+  padding: 20px;
+}
+
+@include media-breakpoint-down(lg) {
+  main {
+    padding: 20px 0;
+  }
+}
