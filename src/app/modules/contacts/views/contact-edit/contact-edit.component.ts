@@ -4,7 +4,6 @@ import {GenderEnum} from "@shared/enums/gender.enum";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ContactsService} from "@core/services/contacts/contacts.service";
 import {ToastrService} from "ngx-toastr";
-import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Contact} from "@shared/models/contacts/contact.model";
 import {ContactsRoute} from "@modules/contacts/views/contacts.route";
@@ -15,11 +14,10 @@ import {ContactsRoute} from "@modules/contacts/views/contacts.route";
   styleUrls: ['./contact-edit.component.scss']
 })
 export class ContactEditComponent implements OnInit {
-  fields = ColumnsConfig;
+  fields = ColumnsConfig.filter(el => el.key !== 'actions');
   genderEnum = GenderEnum;
   form: FormGroup;
   id: number;
-  subscription = new Subscription();
 
   constructor(private fb: FormBuilder,
               private contactsService: ContactsService,
@@ -35,10 +33,6 @@ export class ContactEditComponent implements OnInit {
     });
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   createForm(contact: Contact) {
     this.form = this.fb.group({
       nickname: [contact.nickname, [Validators.required, Validators.maxLength(24)]],
@@ -51,13 +45,11 @@ export class ContactEditComponent implements OnInit {
   }
 
   editContact() {
-    this.subscription.add(
-      this.contactsService.editContact({id: this.id, ...this.form.value}).subscribe(
-        () => {
-          this.goToClients();
-          this.toastr.success('Kontakt edytowany!');
-        }
-      )
+    this.contactsService.editContact({id: this.id, ...this.form.value}).subscribe(
+      () => {
+        this.goToClients();
+        this.toastr.success('Kontakt edytowany!');
+      }
     );
   }
 
