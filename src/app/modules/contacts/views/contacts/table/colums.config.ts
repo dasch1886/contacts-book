@@ -21,10 +21,10 @@ export const ColumnsConfig = [
   },
   {
     key: 'gender',
-    header: 'płeć'
+    value: 'płeć'
   },
   {
     key: 'actions',
-    header : ''
+    value : ''
   }
 ];
