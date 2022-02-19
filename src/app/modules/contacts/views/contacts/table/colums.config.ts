@@ -1,23 +1,23 @@
 export const ColumnsConfig = [
   {
     key: 'nickname',
-    header: 'pseudonim'
+    value: 'pseudonim'
   },
   {
     key: 'name',
-    header: 'imię'
+    value: 'imię'
   },
   {
     key: 'surname',
-    header: 'nazwisko'
+    value: 'nazwisko'
   },
   {
     key: 'email',
-    header: 'adres email'
+    value: 'adres email'
   },
   {
     key: 'phone',
-    header: 'numer telefonu'
+    value: 'numer telefonu'
   },
   {
     key: 'gender',
