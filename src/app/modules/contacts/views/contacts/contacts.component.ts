@@ -9,7 +9,6 @@ import {AddContactDialogComponent} from "@modules/contacts/views/contacts/add-co
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
-
   @ViewChild(ContactsTableComponent) table: ContactsTableComponent;
 
   constructor(private dialog: MatDialog) {}
