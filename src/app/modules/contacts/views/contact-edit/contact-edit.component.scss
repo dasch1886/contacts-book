@@ -1,0 +1,28 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+:host {
+  width: 60%;
+  display: block;
+}
+
+mat-form-field {
+  width: 49%;
+  padding-bottom: 10px;
+}
+
+button.mat-raised-button {
+  margin-right: 10px;
+}
+
+@include media-breakpoint-down(lg) {
+  :host {
+    width: 100%;
+    padding: 15px;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  mat-form-field {
+      width: 100%;
+    }
+}
